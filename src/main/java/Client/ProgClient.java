@@ -8,10 +8,12 @@ public class ProgClient
 {
     public static void main(String[] args) throws IOException
     {
-        String ipAddress = "";
+        String ipAddress = "";      //Variabile di input per l'indirizzo IP per connettersi al Server
         System.out.println("Inserire Indirizzo IP");
+        
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            ipAddress = br.readLine();
+        ipAddress = br.readLine();
+            
         Client client = new Client(ipAddress, 5000);
         
         client.Client();

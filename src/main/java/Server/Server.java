@@ -8,9 +8,9 @@ import java.net.Socket;
 
 public class Server 
 {
-    private Socket socket;
-    private ServerSocket server;
-    private DataInputStream input;
+    private Socket socket; //Il socket ha il compito di creare una comunicazione tra due programmi in esecuzione nella rete
+    private ServerSocket server; //Server ha il compito di mettersi in ascolto nella porta
+    private DataInputStream input;  //Per leggere i messaggi che invia il Client
     private int porta;
     
     public Server(int porta) throws IOException
@@ -22,12 +22,12 @@ public class Server
     {
         try
         {
-        server = new ServerSocket(porta);
+        server = new ServerSocket(porta);   //Qui Il server verifica se la porta è disponibile altrimenti genere a un eccezzione(per esempio se la Porta è gia in uso)
         System.out.println("Server Avviato");
         
         System.out.println("In Attesa Del Client");
         
-        socket = server.accept();
+        socket = server.accept(); //Qui il server accetta la richiesta del Client di entrare nel Socket
         System.out.println("Client Connesso");
         
         input = new DataInputStream (new BufferedInputStream(socket.getInputStream()));
@@ -38,7 +38,7 @@ public class Server
         {
             try
             {
-                inputMessaggio = input.readUTF();
+                inputMessaggio = input.readUTF(); //Lettura dei messaggi del CLient e stampa
                 System.out.println(inputMessaggio);
             }
             catch(IOException e)
